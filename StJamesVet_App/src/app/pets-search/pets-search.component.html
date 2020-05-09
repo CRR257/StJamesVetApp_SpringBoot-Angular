@@ -1,0 +1,27 @@
+<input type="text" #param placeholder="Search Pet..." required>
+<button (click)="searchPetByValue(param.value)">Search</button>
+<div *ngIf="showPetResult" class="table">
+<p>Table results:</p>
+<tr>
+    <th>Pet Id</th>
+    <th>Microchip</th>
+    <th>Name</th>
+    <th>Species</th>
+    <th>Breed</th>
+    <th>Date of Birth</th>
+    <th>Observations</th>
+    <th>Ower's Nif</th>
+    <th>Owner's Mobile number</th>
+  </tr>
+  <tr *ngFor="let pet of petsSearchResult[0]">
+    <td>{{pet.petsId}}</td>
+    <td>{{pet.petsMicrochipNumber}}</td>
+    <td>{{pet.petsName}}</td>
+    <td>{{pet.petsSpecies}}</td>
+    <td>{{pet.petsBreed}}</td>
+    <td>{{pet.petsDateOfBirth}}</td>
+    <td>{{pet.petsObservations}}</td>
+    <td>{{pet.ownersNif}}</td>
+    <td>{{pet.ownersMobileNumber}}</td>
+  </tr>
+</div>

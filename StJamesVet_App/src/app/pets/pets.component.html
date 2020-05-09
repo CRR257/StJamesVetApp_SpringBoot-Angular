@@ -1,0 +1,7 @@
+<app-header></app-header>
+<app-pets-search 
+    (searchPetByNumber)="searchPetByNumber($event)"
+    (searchPetByString)="searchPetByString($event)"            
+    [petsSearchResult]="petsSearchResult" 
+></app-pets-search>
+<app-pets-list [pets]="pets"></app-pets-list>

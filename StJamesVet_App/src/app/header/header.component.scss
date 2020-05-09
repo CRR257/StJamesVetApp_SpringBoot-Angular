@@ -1,0 +1,14 @@
+.nav {
+    height: 66px;
+    border-bottom: 1px solid white;
+    background-color: #3e6098;
+    padding: 22px;
+  
+    a {
+      color: white;
+      margin: 0 16px;
+      &.active {
+        text-decoration: underline;
+      }
+    }
+}
