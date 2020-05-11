@@ -9,6 +9,7 @@
     <th>Observations</th>
     <th>Ower's Nif</th>
     <th>Owner's Mobile number</th>
+    <th>Actions</th>
 </tr>
 <tr *ngFor="let pet of pets">
     <td>{{pet.petsId}}</td>
@@ -20,5 +21,6 @@
     <td>{{pet.petsObservations}}</td>
     <td>{{pet.ownersNif}}</td>
     <td>{{pet.ownersMobileNumber}}</td>
-  </tr>
+    <td><button (click)="deletePets(pet.petsId)" class="delete">Delete</button>
+        <button (click)="modifyPets(pet.petsId)" class="modify">Modify</button></td>
 </div>

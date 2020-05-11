@@ -1,6 +1,5 @@
-<app-header></app-header>
-<div class="container-register">
-    <p class="container-title">Pet's Registration</p>
+<div class="container-modify">
+    <p class="container-title">Pet's Modify</p>
     <form (ngSubmit)="handleSubmit(form, form.valid); form.reset()" #form="ngForm">
         <p class="container-section">Pet's Information </p>
         <div class="container-information">
@@ -54,24 +53,3 @@
     </form>
 </div>
 
-
-
-<!-- 
-"ownersNif": "334457C",
-"ownersMobileNumber": 617555876,
-"petsMicrochipNumber": 555,
-"petsName": "Pandet",
-"petsSpecies": "cat",
-"petsBreed": "british-cat",
-"petsDateOfBirth": "15/1/2015",
-"petsObservations": "sterilized on 10/05/2017" -->
-
-<!-- del register 
-ownersMobileNumber: 99900777
-ownersNif: "888R"
-petsBreed: "british"
-petsDateOfBirth: "15/10/1985"
-petsMicrochipNumber: 55
-petsName: "Clara"
-petsObservations: "obs"
-petsSpecies: "Cat" -->

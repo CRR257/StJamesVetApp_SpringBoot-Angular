@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {PetsService} from '../service/pets.service';
+import { PetsService } from '../service/pets.service';
+import { Pets } from '../interface/petsInterface';
 
 @Component({
   selector: 'app-pets',
@@ -9,58 +10,54 @@ import {PetsService} from '../service/pets.service';
 export class PetsComponent implements OnInit {
 
   pets = [];
-  //petResultById = []
   petsSearchResult = [];
-  numValue: Number;
+  numValue: number;
   strString: String;
+  showModifyPets: boolean = false;
+  petsIdModifying: number
+
   constructor(private petsService: PetsService) { }
 
   ngOnInit(): void {
     this.getAllPets();
   }
 
-  getAllPets(){
+  getAllPets() {
     this.petsService.getPets().subscribe((data: []) => {
       this.pets = data;
       console.log(this.pets)
-    }) 
+    })
   }
 
-  searchPetByNumber(numValue: number){
+  searchPetByNumber(numValue: number) {
     console.log(numValue)
-    this.petsService.searchPetsByNumber(numValue).subscribe((data: any) => 
-  this.petsSearchResult = [data]);
-   console.log(this.petsSearchResult);
+    this.petsService.searchPetsByNumber(numValue).subscribe((data: any) =>
+      this.petsSearchResult = [data]);
+    console.log(this.petsSearchResult);
   }
 
-  searchPetByString(strValue: string){
+  searchPetByString(strValue: string) {
     console.log(strValue)
-    this.petsService.searchPetsByString(strValue).subscribe((data: any) => 
-  this.petsSearchResult = [data]);
-   console.log(this.petsSearchResult);
+    this.petsService.searchPetsByString(strValue).subscribe((data: any) =>
+      this.petsSearchResult = [data]);
+    console.log(this.petsSearchResult);
   }
 
-  // searchPetById(value: any) {
-  //   console.log(value)
-  //   //var ab = 123
-  //   var reg = /^\d+$/;
-  //   console.log(reg.test(value))
-  //   if(reg.test(value)){
-  // //if (/^([a-z0-9]{5,})$/.test(value)){
-  //   console.log("number")
-  //   this.strValue = value
-  //   this.petsService.searchPetsByNumber(this.strValue).subscribe((data: any) => 
-  //   this.petsSearchResult = [data]);
-  //   console.log(this.petsSearchResult);
-  //   }else {
-  //     console.log("letter")
-  //     this.petsService.searchPetsByString(value).subscribe((data: any) => 
-  //   this.petsSearchResult = [data]);
-  //   console.log(this.petsSearchResult);
-  //   }
-  //   //  this.petsService.searchPetsId(value).subscribe((data: any) => 
-  //   //  this.petResultById = [data]);
-  //   // console.log(this.petResultById);
-  // }
+  deletePetsById(petsId: number) {
+    console.log(petsId);
+    this.petsService.deletePets(petsId).subscribe();
+    this.ngOnInit();   
+  }
 
+  modifyPetsById(petsId: number) {
+    this.showModifyPets = true;
+    this.petsIdModifying = petsId;
+  }
+
+  updatePet(pets: Pets) {
+    let petsId = this.petsIdModifying
+    console.log(pets)
+    console.log(petsId)
+    this.petsService.modifyPet(pets, petsId).subscribe();
+  }
 }

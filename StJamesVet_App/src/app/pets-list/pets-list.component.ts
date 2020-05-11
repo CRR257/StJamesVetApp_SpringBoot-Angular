@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Pets } from '../interface/petsInterface';
 
 @Component({
@@ -14,4 +14,19 @@ export class PetsListComponent implements OnInit {
 
   @Input()
   pets: Pets[];
+
+  @Output()
+  deletePetsById: EventEmitter<number> = new EventEmitter();
+
+  @Output()
+  modifyPetsById: EventEmitter<number> = new EventEmitter();
+
+  deletePets(petsId: number) {
+    this.deletePetsById.emit(petsId);
+  }
+
+  modifyPets(petsId: number) {
+    console.log(petsId)
+    this.modifyPetsById.emit(petsId);
+  }
 }

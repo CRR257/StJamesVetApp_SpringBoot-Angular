@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import {PetsService} from '../service/pets.service';
 import { Pets } from '../interface/petsInterface';
 
 
@@ -27,10 +26,7 @@ export class PetsSearchComponent implements OnInit {
 
   @Output()
   searchPetByNumber: EventEmitter<number> = new EventEmitter();
-  // searchPetById(id: number){
-  //   this.petsService.searchPetId(id).subscribe((data) => this.petResultById = data);
-  //   console.log(this.petResultById);
-  // }
+
   searchPetByValue(value: any) {
     console.log(value)
     console.log(typeof(value))
@@ -50,7 +46,6 @@ export class PetsSearchComponent implements OnInit {
     console.log(numValue)
     this.searchPetByNumber.emit(numValue);
     this.showPetResult = true;
-
   }
 
   searchPetByStr(strValue: string){
@@ -59,26 +54,5 @@ export class PetsSearchComponent implements OnInit {
     this.showPetResult = true;
   }
 
-  // searchPetById(value: any) {
-  //   console.log(value)
-    //var ab = 123
-  //   var reg = /^\d+$/;
-  //   console.log(reg.test(value))
-  //   if(reg.test(value)){
-  // //if (/^([a-z0-9]{5,})$/.test(value)){
-  //   console.log("number")
-  //   this.strValue = value
-  //   this.petsService.searchPetsByNumber(this.strValue).subscribe((data: any) => 
-  //   this.petsSearchResult = [data]);
-  //   console.log(this.petsSearchResult);
-  //   }else {
-  //     console.log("letter")
-  //     this.petsService.searchPetsByString(value).subscribe((data: any) => 
-  //   this.petsSearchResult = [data]);
-  //   console.log(this.petsSearchResult);
-  //   }
-    //  this.petsService.searchPetsId(value).subscribe((data: any) => 
-    //  this.petResultById = [data]);
-    // console.log(this.petResultById);
-  }
+}
 

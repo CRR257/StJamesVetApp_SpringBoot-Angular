@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { PetsComponent } from './pets/pets.component';
 import { PetsListComponent } from './pets-list/pets-list.component';
 import { PetsSearchComponent } from './pets-search/pets-search.component';
 import { HeaderComponent } from './header/header.component';
 import { PetsCreateComponent } from './pets-create/pets-create.component';
+import { PetsModifyComponent } from './pets-modify/pets-modify.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { PetsCreateComponent } from './pets-create/pets-create.component';
     PetsListComponent,
     PetsSearchComponent,
     HeaderComponent,
-    PetsCreateComponent
+    PetsCreateComponent,
+    PetsModifyComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

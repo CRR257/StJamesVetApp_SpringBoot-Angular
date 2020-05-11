@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PetsService } from '../service/pets.service';
 
 @Component({
   selector: 'app-pets-create',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PetsCreateComponent implements OnInit {
 
-  constructor() { }
+  constructor( private petsService: PetsService ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+
+  handleSubmit(form: any, valid: boolean) {
+    console.log(form.value);
+    if (valid) {
+      this.petsService.createPet(form.value).subscribe();
+      form.resetForm();
+    }
   }
-
 }

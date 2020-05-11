@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
+import { Pets } from '../interface/petsInterface';
 
 @Injectable({
   providedIn: 'root'
@@ -9,22 +10,33 @@ export class PetsService {
 
   constructor(private service: HttpClient) { }
 
+  PETS_API: string = "http://localhost:8080/v1"
+
   getPets(): Observable<any> {
-    return this.service.get(`http://localhost:8080/pets/`)   
+    return this.service.get(`${this.PETS_API}/pets/`)
   }
 
   searchPetsId(id: number): Observable<any> {
-    return this.service.get(`http://localhost:8080/pets/${id}`)   
-  } 
+    return this.service.get(`${this.PETS_API}/pets/${id}`)
+  }
 
   searchPetsByString(strValue: string): Observable<any> {
-    console.log(strValue)
-    return this.service.get(`http://localhost:8080/pets/value=${strValue}`)   
-  } 
+    return this.service.get(`${this.PETS_API}/pets/value=${strValue}`)
+  }
 
   searchPetsByNumber(numValue: number): Observable<any> {
-    console.log(numValue)
-    console.log(typeof(numValue))
-    return this.service.get(`http://localhost:8080/pets/num=${numValue}`)   
-  } 
+    return this.service.get(`${this.PETS_API}/pets/num=${numValue}`)
+  }
+
+  deletePets(petsId: number): Observable<any> {
+    return this.service.delete(`${this.PETS_API}/pets/${petsId}`)
+  }
+
+  createPet(pet: Pets): Observable<any> {
+    return this.service.post(`${this.PETS_API}/pets`, pet)
+  }
+
+  modifyPet(pet: Pets, petsId: number): Observable<any> {
+    return this.service.put(`${this.PETS_API}/pets/${petsId}`, pet)
+  }
 }

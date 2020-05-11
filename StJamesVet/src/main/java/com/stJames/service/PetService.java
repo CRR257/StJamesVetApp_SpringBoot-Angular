@@ -2,8 +2,10 @@ package com.stJames.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.stJames.model.Pet;
@@ -22,8 +24,8 @@ public class PetService {
         return pets;
     }
 
-    public Pet getPetById(int id) {
-        return petRepository.findById(id).get();
+    public Pet getPetById(int petsId) {
+        return petRepository.findById(petsId).get();
     }
 
     public  ArrayList<Pet> getPetByName(String petsName) {
@@ -53,12 +55,18 @@ public class PetService {
         return resultList;
     }
     
-    public void createPet(Pet person) {
-        petRepository.save(person);
+    public void createPet(Pet pet) {
+        petRepository.save(pet);
+    }
+    
+    public void modifyPet(Pet pet) {
+    	int petsId = pet.getPetsId();
+    	Optional<Pet> petFinded = petRepository.findById(petsId);
+    	petRepository.save(pet);
     }
 
-    public void delete(int id) {
-        petRepository.deleteById(id);
+    public void delete(int petsId) {
+        petRepository.deleteById(petsId);
     }
 
 }

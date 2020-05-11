@@ -13,7 +13,7 @@ public class Pet {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
 	private int petsId;
-	 
+	
     private String ownersNif;
     private int ownersMobileNumber;
     private int petsMicrochipNumber;

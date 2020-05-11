@@ -7,4 +7,5 @@ export class Pets {
    petsBreed: string
    petsDateOfBirth: string
    petsObservations: string
+   petsSpecies: string
 }
