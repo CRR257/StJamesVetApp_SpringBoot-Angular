@@ -16,32 +16,32 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stJames.model.Pet;
-import com.stJames.service.PetService;
+import com.stJames.service.impl.PetServiceImpl;
 
 @RestController
 public class PetController {
 
     @Autowired
-    PetService petService;
+    PetServiceImpl petService;
     
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/v1/pets")
     private List<Pet> getAllPets() {
         return petService.getAllPets();
     }
-    
+
     @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/v1/pets/{petsId}")
-    private int modifyPet(@RequestBody Pet pet, @PathVariable int petsId) {
+    private Pet modifyPet(@RequestBody Pet pet, @PathVariable int petsId) {
     	petService.modifyPet(pet);
-    	return pet.getPetsId();
+    	return pet;
     }
     
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/v1/pets")
-    private int createPet(@RequestBody Pet pet) {
+    private Pet createPet(@RequestBody Pet pet) {
         petService.createPet(pet);
-        return pet.getPetsId();
+        return pet;   
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
