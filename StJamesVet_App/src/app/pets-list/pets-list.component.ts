@@ -26,7 +26,6 @@ export class PetsListComponent implements OnInit {
   }
 
   modifyPets(petsId: number) {
-    console.log(petsId)
     this.modifyPetsById.emit(petsId);
   }
 }

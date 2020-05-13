@@ -33,7 +33,7 @@ public class PetController {
     @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/v1/pets/{petsId}")
     private Pet modifyPet(@RequestBody Pet pet, @PathVariable int petsId) {
-    	petService.modifyPet(pet);
+    	petService.modifyPet(pet, petsId);
     	return pet;
     }
     

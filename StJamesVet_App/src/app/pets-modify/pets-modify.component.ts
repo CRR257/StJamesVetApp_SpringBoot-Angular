@@ -10,17 +10,21 @@ export class PetsModifyComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
+
 
   @Input()
   pets: Pets[];
+
+  @Input()
+  petToModify: Pets[];
 
   @Output()
   updatePet: EventEmitter<Pets> = new EventEmitter;
 
   handleSubmit(form: any, valid: boolean) {
     console.log(form.value);
+    console.log(this.pets)
     if (valid) {
      this.updatePet.emit(form.value)
       form.resetForm();

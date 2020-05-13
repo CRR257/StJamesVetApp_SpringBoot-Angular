@@ -12,7 +12,7 @@ public interface PetService {
 	ArrayList<Pet> getPetByStringValue(String strValue);
 	ArrayList<Pet> getPetByNumberValue(int numValue);
 	Pet createPet(Pet pet);
-	Pet modifyPet(Pet pet);
+	Pet modifyPet(Pet pet, int petsId);
 	void delete(int petsId);
 	
 }

@@ -13,6 +13,7 @@
   <app-pets-modify
     *ngIf="showModifyPets"
     [pets]="pets"
+    [petToModify]="petToModify"
     (updatePet)="updatePet($event)"
   ></app-pets-modify>
 </div>

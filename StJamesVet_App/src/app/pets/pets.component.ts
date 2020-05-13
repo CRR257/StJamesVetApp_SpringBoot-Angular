@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { PetsService } from '../service/pets.service';
 import { Pets } from '../interface/petsInterface';
 
@@ -11,6 +11,9 @@ export class PetsComponent implements OnInit {
 
   pets = [];
   petsSearchResult = [];
+  petToModify = []
+  petModified = []
+  //petToUpdate = [];
   numValue: number;
   strString: String;
   showModifyPets: boolean = false;
@@ -21,6 +24,9 @@ export class PetsComponent implements OnInit {
   ngOnInit(): void {
     this.getAllPets();
   }
+
+  // @Output()
+  // petSelectedToModify: EventEmitter<Pets> = new EventEmitter();
 
   getAllPets() {
     this.petsService.getPets().subscribe((data: []) => {
@@ -50,14 +56,20 @@ export class PetsComponent implements OnInit {
   }
 
   modifyPetsById(petsId: number) {
+    console.log(petsId)
     this.showModifyPets = true;
     this.petsIdModifying = petsId;
+    this.pets.forEach((pet, index) => {
+      if (pet.petsId === petsId) {
+        this.petToModify.push(pet);
+      }
+    })
   }
 
-  updatePet(pets: Pets) {
-    let petsId = this.petsIdModifying
-    console.log(pets)
+  updatePet(pet: Pets) {
+    let petsId = this.petsIdModifying;
+    console.log(pet)
     console.log(petsId)
-    this.petsService.modifyPet(pets, petsId).subscribe();
+    this.petsService.modifyPet(pet, petsId).subscribe();
   }
 }
