@@ -1,43 +1,7 @@
-.container {
-  &-register {
-    border: 1px solid grey;
-    padding: 3rem;
-    margin-top: 10px;
-    border-radius: 3px;
-    background-color: #bbbaba;
-  }
-  &-information {
-    padding: 5px 0;
-    &__textarea{
-        display: flex;
-        flex-direction: column;
-        padding: 5px 0;
-    }
-    &__error {
-        color: #fd5739;
-        margin: 5px 0;     
-    }
-  }
-  &-title {
-    text-align: center;
-    margin: unset;
-    font-weight: 800;
-    text-decoration: underline;
-    padding-bottom: 14px;
-  }
-  &-section {
-    font-weight: 600;
-  }
-}
-
-.submit {
-    margin: 3rem 0;
-    border: 1px solid grey;
-    background-color: #f5b94b;
-}
 
 input {
     display: flex;
+    letter-spacing: 1.3px;
 }
 
 textarea {

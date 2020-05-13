@@ -22,12 +22,18 @@ export class PetsModifyComponent implements OnInit {
   @Output()
   updatePet: EventEmitter<Pets> = new EventEmitter;
 
+  @Output()
+  showUptadetePet: EventEmitter<boolean> = new EventEmitter;
+
   handleSubmit(form: any, valid: boolean) {
     console.log(form.value);
-    console.log(this.pets)
     if (valid) {
      this.updatePet.emit(form.value)
       form.resetForm();
     }
+  }
+
+  hideUpdatePet(value: boolean) {
+    this.showUptadetePet.emit(value);
   }
 }

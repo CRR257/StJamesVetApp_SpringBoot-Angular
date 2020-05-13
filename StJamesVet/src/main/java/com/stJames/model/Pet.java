@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-@SequenceGenerator(name="seq", initialValue=7, allocationSize=100)
+@SequenceGenerator(name="seq", initialValue=10, allocationSize=100)
 public class Pet {
 	
 	@Id

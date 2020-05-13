@@ -1,19 +1,22 @@
 <app-header></app-header>
 <div class="container">
   <app-pets-search
+    *ngIf="!showModifyPets"
     (searchPetByNumber)="searchPetByNumber($event)"
     (searchPetByString)="searchPetByString($event)"
     [petsSearchResult]="petsSearchResult"
   ></app-pets-search>
-  <app-pets-list
-    [pets]="pets"
-    (deletePetsById)="deletePetsById($event)"
-    (modifyPetsById)="modifyPetsById($event)"
-  ></app-pets-list>
   <app-pets-modify
     *ngIf="showModifyPets"
     [pets]="pets"
     [petToModify]="petToModify"
     (updatePet)="updatePet($event)"
+    (showUptadetePet)="showUptadetePet($event)"
   ></app-pets-modify>
+  <app-pets-list
+    *ngIf="!showModifyPets"
+    [pets]="pets"
+    (deletePetsById)="deletePetsById($event)"
+    (modifyPetsById)="modifyPetsById($event)"
+  ></app-pets-list>
 </div>

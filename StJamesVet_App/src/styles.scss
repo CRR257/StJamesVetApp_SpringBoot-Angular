@@ -20,10 +20,20 @@ button {
     letter-spacing: 1.1px;
     cursor: pointer;
     border-radius: 2px;
-    border: unset;
+    border: 1px solid grey;
     padding: 8px;
     margin: 10px;
     font-size: 12px;
+}
+
+.button {
+  margin: 3rem 0;
+  &-submit {
+      background-color: #f5b94b;    
+  }
+  &-cancel {
+    background-color: #fc7159fa;
+  }
 }
 
 .table {
@@ -61,4 +71,36 @@ input, select {
   padding: 5px;
   font-size: 14px;
   background-color: white;
+}
+
+.container {
+  &-form {
+    border: 1px solid grey;
+    padding: 3rem;
+    margin-top: 10px;
+    border-radius: 3px;
+    background-color: #bbbaba;
+  }
+  &-information {
+    padding: 5px 0;
+    &__textarea{
+        display: flex;
+        flex-direction: column;
+        padding: 5px 0;
+    }
+    &__error {
+        color: #fd5739;
+        margin: 5px 0;     
+    }
+  }
+  &-title {
+    text-align: center;
+    margin: unset;
+    font-weight: 800;
+    text-decoration: underline;
+    padding-bottom: 14px;
+  }
+  &-section {
+    font-weight: 600;
+  }
 }

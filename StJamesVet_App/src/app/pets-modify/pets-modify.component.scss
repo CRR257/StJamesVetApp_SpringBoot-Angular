@@ -1,5 +1,7 @@
-input {
+input, select, textarea {
     display: flex;
+    background-color: #e2e2e2;
+    letter-spacing: 1.3px;
 }
 
 textarea {

@@ -21,6 +21,13 @@
     <td>{{pet.petsObservations}}</td>
     <td>{{pet.ownersNif}}</td>
     <td>{{pet.ownersMobileNumber}}</td>
-    <td><button (click)="deletePets(pet.petsId)" class="delete">Delete</button>
-        <button (click)="modifyPets(pet.petsId)" class="modify">Modify</button></td>
+    <td><button (click)="deletePetSelected(pet.petsId)" class="delete">Delete</button>
+        <button (click)="modifyPetSelected(pet.petsId)" class="modify">Modify</button>
+    </td>
+</tr>
+<div *ngIf="showDeleteConfirmation" class="popup">
+    <p>Are you sure you want to delete?</p>
+    <button class="button-submit" (click)="deleteConfirm(true)">Yes</button>
+    <button class="button-cancel" (click)="deleteConfirm(false)">No</button>
+</div>
 </div>

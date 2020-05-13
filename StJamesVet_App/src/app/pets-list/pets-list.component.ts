@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Pets } from '../interface/petsInterface';
-
+import {Router} from '@angular/router';
+import {PetsComponent } from '../pets/pets.component';
 @Component({
   selector: 'app-pets-list',
   templateUrl: './pets-list.component.html',
@@ -8,7 +9,11 @@ import { Pets } from '../interface/petsInterface';
 })
 export class PetsListComponent implements OnInit {
 
-  constructor() { }
+  showDeleteConfirmation: boolean = false;
+  //deleteConfirmation: boolean = false;
+  idPetSeletedToDelete: number;
+
+  constructor( private router: Router ) { }
 
   ngOnInit(): void { }
 
@@ -21,11 +26,24 @@ export class PetsListComponent implements OnInit {
   @Output()
   modifyPetsById: EventEmitter<number> = new EventEmitter();
 
-  deletePets(petsId: number) {
-    this.deletePetsById.emit(petsId);
+  deletePetSelected(petsId: number) {
+    this.showDeleteConfirmation = true;
+    this.idPetSeletedToDelete = petsId;
   }
 
-  modifyPets(petsId: number) {
+  modifyPetSelected(petsId: number) {
     this.modifyPetsById.emit(petsId);
+  }
+
+  deleteConfirm(value: boolean) {
+    if (value === true) {
+      this.deletePetsById.emit(this.idPetSeletedToDelete);
+      //this.ngOnInit();
+    //   this.router.navigateByUrl('/home', { skipLocationChange: true }).then(() => {
+    //     this.router.navigate(['PetsComponent']);
+    // }); 
+      //this.router.navigate([PetsComponent ]);
+    }
+    this.showDeleteConfirmation = false;
   }
 }

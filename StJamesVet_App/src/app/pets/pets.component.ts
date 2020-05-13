@@ -11,9 +11,8 @@ export class PetsComponent implements OnInit {
 
   pets = [];
   petsSearchResult = [];
-  petToModify = []
-  petModified = []
-  //petToUpdate = [];
+  petToModify = [];
+  petDeleted = [];
   numValue: number;
   strString: String;
   showModifyPets: boolean = false;
@@ -25,9 +24,6 @@ export class PetsComponent implements OnInit {
     this.getAllPets();
   }
 
-  // @Output()
-  // petSelectedToModify: EventEmitter<Pets> = new EventEmitter();
-
   getAllPets() {
     this.petsService.getPets().subscribe((data: []) => {
       this.pets = data;
@@ -36,27 +32,24 @@ export class PetsComponent implements OnInit {
   }
 
   searchPetByNumber(numValue: number) {
-    console.log(numValue)
     this.petsService.searchPetsByNumber(numValue).subscribe((data: any) =>
       this.petsSearchResult = [data]);
     console.log(this.petsSearchResult);
   }
 
   searchPetByString(strValue: string) {
-    console.log(strValue)
     this.petsService.searchPetsByString(strValue).subscribe((data: any) =>
       this.petsSearchResult = [data]);
     console.log(this.petsSearchResult);
   }
 
   deletePetsById(petsId: number) {
-    console.log(petsId);
-    this.petsService.deletePets(petsId).subscribe();
-    this.ngOnInit();   
+    this.petsService.deletePets(petsId).subscribe(() => {
+      this.getAllPets();
+    })
   }
 
   modifyPetsById(petsId: number) {
-    console.log(petsId)
     this.showModifyPets = true;
     this.petsIdModifying = petsId;
     this.pets.forEach((pet, index) => {
@@ -68,8 +61,12 @@ export class PetsComponent implements OnInit {
 
   updatePet(pet: Pets) {
     let petsId = this.petsIdModifying;
-    console.log(pet)
-    console.log(petsId)
     this.petsService.modifyPet(pet, petsId).subscribe();
+  }
+
+  showUptadetePet(value: boolean) {
+    this.showModifyPets = false;
+    this.petToModify = [];
+    console.log(this.petToModify)
   }
 }

@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="container-register">
+<div class="container-form">
     <p class="container-title">Pet's Registration</p>
     <form (ngSubmit)="handleSubmit(form, form.valid); form.reset()" #form="ngForm">
         <p class="container-section">Pet's Information </p>
@@ -50,28 +50,7 @@
             <input type="number" name="ownersMobileNumber" [ngModel]="" #ownersMobileNumber="ngModel" required>
             <p *ngIf="form.submitted && ownersMobileNumber.errors?.required" class="container-information__error">* Owner's Mobile Number is required</p>
         </div>
-        <button type="submit" class="submit">Submit</button>
+        <button type="submit" class="button-submit">Submit</button>
+        <button type="submit" class="button-cancel" [routerLink]="'/'">Cancel</button>
     </form>
 </div>
-
-
-
-<!-- 
-"ownersNif": "334457C",
-"ownersMobileNumber": 617555876,
-"petsMicrochipNumber": 555,
-"petsName": "Pandet",
-"petsSpecies": "cat",
-"petsBreed": "british-cat",
-"petsDateOfBirth": "15/1/2015",
-"petsObservations": "sterilized on 10/05/2017" -->
-
-<!-- del register 
-ownersMobileNumber: 99900777
-ownersNif: "888R"
-petsBreed: "british"
-petsDateOfBirth: "15/10/1985"
-petsMicrochipNumber: 55
-petsName: "Clara"
-petsObservations: "obs"
-petsSpecies: "Cat" -->
