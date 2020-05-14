@@ -13,6 +13,6 @@ public interface PetService {
 	ArrayList<Pet> getPetByNumberValue(int numValue);
 	Pet createPet(Pet pet);
 	Pet modifyPet(Pet pet, int petsId);
-	void delete(int petsId);
+	int delete(int petsId);
 	
 }

@@ -12,7 +12,6 @@ export class PetsCreateComponent implements OnInit {
 
   ngOnInit(): void { }
 
-
   handleSubmit(form: any, valid: boolean) {
     console.log(form.value);
     if (valid) {

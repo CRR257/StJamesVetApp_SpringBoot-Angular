@@ -1,7 +1,10 @@
 package com.stJames.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import javax.validation.ConstraintViolationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -52,26 +55,33 @@ public class PetController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/v1/pets/name={petsName}", method = RequestMethod.GET)
-    private  ArrayList<Pet> getPetByName(@PathVariable String petsName) {
+    private ArrayList<Pet> getPetByName(@PathVariable String petsName) {
         return petService.getPetByName(petsName);
     }
     
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/v1/pets/value={strValue}", method = RequestMethod.GET)
-    private  ArrayList<Pet> getPetByStringValue(@PathVariable String strValue) {
+    private ArrayList<Pet> getPetByStringValue(@PathVariable String strValue) {
         return petService.getPetByStringValue(strValue);
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/v1/pets/num={numValue}", method = RequestMethod.GET)
-    private  ArrayList<Pet> getPetByNumberValue(@PathVariable int numValue) {
+    private ArrayList<Pet> getPetByNumberValue(@PathVariable int numValue) {
         return petService.getPetByNumberValue(numValue);
     }
     
+//    @CrossOrigin(origins = "http://localhost:4200")
+//    @DeleteMapping("/v1/pets/{petsId}")
+//    private void deletePet(@PathVariable("petsId") int petsId) {
+//        petService.delete(petsId);
+//    }
+    
     @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/v1/pets/{petsId}")
-    private void deletePet(@PathVariable("petsId") int petsId) {
+    private int deletePet(@PathVariable("petsId") int petsId) {
         petService.delete(petsId);
+        return petsId;
     }
 
 }

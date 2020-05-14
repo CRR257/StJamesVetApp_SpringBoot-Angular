@@ -30,4 +30,8 @@
     <button class="button-submit" (click)="deleteConfirm(true)">Yes</button>
     <button class="button-cancel" (click)="deleteConfirm(false)">No</button>
 </div>
+<div *ngIf="petDeleted && showDeleteFeedBack" class="popup">
+    <p>Pet correctly deleted</p>
+    <button class="button-submit" (click)="closeDeleteFeedBack()">Close</button>
+</div>
 </div>

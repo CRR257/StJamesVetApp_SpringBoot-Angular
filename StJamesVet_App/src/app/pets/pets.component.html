@@ -1,11 +1,14 @@
 <app-header></app-header>
 <div class="container">
   <app-pets-search
-    *ngIf="!showModifyPets"
+    *ngIf="!showModifyPets || error"
     (searchPetByNumber)="searchPetByNumber($event)"
     (searchPetByString)="searchPetByString($event)"
     [petsSearchResult]="petsSearchResult"
   ></app-pets-search>
+  <div *ngIf="error" class="warning">
+    <p class="warning-text">{{this.error}}</p>
+  </div>
   <app-pets-modify
     *ngIf="showModifyPets"
     [pets]="pets"
@@ -16,6 +19,7 @@
   <app-pets-list
     *ngIf="!showModifyPets"
     [pets]="pets"
+    [petDeleted]="petDeleted"
     (deletePetsById)="deletePetsById($event)"
     (modifyPetsById)="modifyPetsById($event)"
   ></app-pets-list>

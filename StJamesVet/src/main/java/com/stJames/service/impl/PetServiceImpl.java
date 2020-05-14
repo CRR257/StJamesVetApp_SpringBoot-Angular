@@ -2,11 +2,11 @@ package com.stJames.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.stJames.exception.NoDataFoundException;
 import com.stJames.model.Pet;
 import com.stJames.repository.PetRepository;
 import com.stJames.service.PetService;
@@ -49,6 +49,9 @@ public class PetServiceImpl implements PetService {
         	 for (Pet pet : resultByAnyString) {
         		 resultListByAnyString.add(pet);
              }
+        	 if(resultListByAnyString.isEmpty()) {
+             	throw new NoDataFoundException();
+             }
         	 return resultListByAnyString;
         }
         return resultList;
@@ -59,6 +62,9 @@ public class PetServiceImpl implements PetService {
         ArrayList<Pet> resultList = new ArrayList<Pet>();
         for (Pet pet : pets) {
         	resultList.add(pet);
+        }
+        if(resultList.isEmpty()) {
+        	throw new NoDataFoundException();
         }
         return resultList;
     }
@@ -74,8 +80,9 @@ public class PetServiceImpl implements PetService {
     	return pet;
     }
 
-    public void delete(int petsId) {
+    public int delete(int petsId) {
         petRepository.deleteById(petsId);
+        return petsId;
     }
 
 }

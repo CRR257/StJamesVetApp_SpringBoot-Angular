@@ -12,7 +12,9 @@ export class PetsComponent implements OnInit {
   pets = [];
   petsSearchResult = [];
   petToModify = [];
-  petDeleted = [];
+  petDeleted: number;
+  error: String;
+  showError: boolean = false;
   numValue: number;
   strString: String;
   showModifyPets: boolean = false;
@@ -32,19 +34,35 @@ export class PetsComponent implements OnInit {
   }
 
   searchPetByNumber(numValue: number) {
-    this.petsService.searchPetsByNumber(numValue).subscribe((data: any) =>
-      this.petsSearchResult = [data]);
-    console.log(this.petsSearchResult);
+    this.petsService.searchPetsByNumber(numValue).subscribe((data: any) => {
+      this.petsSearchResult = [data];
+      this.error = '';
+      this.showError = false;
+    },
+    (error) => {
+      this.error = error.error.message;
+      this.petsSearchResult = [];
+    })     
   }
 
   searchPetByString(strValue: string) {
-    this.petsService.searchPetsByString(strValue).subscribe((data: any) =>
-      this.petsSearchResult = [data]);
-    console.log(this.petsSearchResult);
+    this.petsService.searchPetsByString(strValue).subscribe(
+      (data: any) => {
+        this.petsSearchResult = [data];
+        this.error = '';
+        this.showError = false;
+      },
+      (error) => {
+        this.error = error.error.message;
+        this.petsSearchResult = [];
+      })
   }
 
   deletePetsById(petsId: number) {
-    this.petsService.deletePets(petsId).subscribe(() => {
+    this.petsService.deletePets(petsId).subscribe((data: any) => {
+      if(petsId === data){
+      this.petDeleted = data;
+      }
       this.getAllPets();
     })
   }
