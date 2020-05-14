@@ -15,12 +15,17 @@ public interface PetRepository extends CrudRepository<Pet, Integer> {
 	@Query("select pet from Pet pet where petsName = :petsName")
 	public  ArrayList<Pet> findByName(@Param("petsName") final String petsName);
 	
-	@Query("select pet from Pet pet where petsName = :strValue  or petsBreed = :strValue "
-			+ " or ownersNif = :strValue or petsSpecies = :strValue or petsDateOfBirth = :strValue")
+	@Query("select pet from Pet pet where lower(petsName) = lower(:strValue)  or lower(petsBreed) = lower(:strValue) "
+			+ " or lower(ownersNif) = lower(:strValue) or lower(petsSpecies) = lower(:strValue) "
+			+ "or petsDateOfBirth = :strValue")
 	public  ArrayList<Pet> findByStringValue(@Param("strValue") final String strValue);
+	
+	@Query("select pet from Pet pet where petsObservations like %:strValue% ")
+	public  ArrayList<Pet> findByAnyStringValue(@Param("strValue") final String strValue);
 	
 	@Query("select pet from Pet pet where ownersMobileNumber = :numValue  "
 			+ "or petsMicrochipNumber = :numValue or petsId = :numValue")
 	public  ArrayList<Pet> findByNumberValue(@Param("numValue") final int numValue);
 
 }
+

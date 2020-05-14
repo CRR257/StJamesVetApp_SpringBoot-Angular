@@ -42,6 +42,15 @@ public class PetServiceImpl implements PetService {
         for (Pet pet : pets) {
         	resultList.add(pet);
         }
+        if (resultList.isEmpty()) {
+        	System.out.println(strValue);
+        	List<Pet> resultByAnyString = petRepository.findByAnyStringValue(strValue);
+        	ArrayList<Pet> resultListByAnyString = new ArrayList<Pet>();
+        	 for (Pet pet : resultByAnyString) {
+        		 resultListByAnyString.add(pet);
+             }
+        	 return resultListByAnyString;
+        }
         return resultList;
     }
     
