@@ -9,9 +9,10 @@ import { Pets } from '../interface/petsInterface';
 })
 export class PetsComponent implements OnInit {
 
-  pets = [];
-  petsSearchResult = [];
-  petToModify = [];
+  pets: Array<any>;
+  totalPets: number;
+  petsSearchResult: Array<any>;
+  petToModify: Array<any>;
   petDeleted: number;
   error: String;
   showError: boolean = false;
@@ -19,6 +20,8 @@ export class PetsComponent implements OnInit {
   strString: String;
   showModifyPets: boolean = false;
   petsIdModifying: number
+  page: number = 0;
+  pages: Array<number>;
 
   constructor(private petsService: PetsService) { }
 
@@ -26,10 +29,25 @@ export class PetsComponent implements OnInit {
     this.getAllPets();
   }
 
+  pageSelected(i: number) {
+    this.page = i;
+    this.getAllPets();
+  }
+
   getAllPets() {
-    this.petsService.getPets().subscribe((data: []) => {
-      this.pets = data;
+    console.log(this.page)
+    this.petsService.getPets(this.page).subscribe(
+      (data) => {
+        console.log(data)
+      this.pets = data['content'];
+      this.pages = new Array(data['totalPages']);
+      this.totalPets = data.totalElements;
+      this.error = '';
       console.log(this.pets)
+      console.log(this.totalPets)
+    },
+    (error) => {
+      this.error = error.error.message;
     })
   }
 
@@ -62,6 +80,12 @@ export class PetsComponent implements OnInit {
     this.petsService.deletePets(petsId).subscribe((data: any) => {
       if(petsId === data){
       this.petDeleted = data;
+      }
+      console.log(this.totalPets)
+      console.log(this.page)
+      let getLastPage = (this.totalPets -1) / 5
+      if(getLastPage % 1 === 0) {
+        this.page = this.page -1
       }
       this.getAllPets();
     })

@@ -4,12 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.stJames.exception.NoDataFoundException;
 import com.stJames.model.Pet;
 import com.stJames.repository.PetRepository;
 import com.stJames.service.PetService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 @Service("petService")
 public class PetServiceImpl implements PetService {
@@ -17,10 +22,9 @@ public class PetServiceImpl implements PetService {
     @Autowired
     PetRepository petRepository;
 
-    public List<Pet> getAllPets() {
-        List<Pet> pets = new ArrayList<Pet>();
-        petRepository.findAll().forEach(pet -> pets.add(pet));
-        return pets;
+    @Override
+    public Page<Pet> getAllPets(Pageable pageable) {
+    	return petRepository.findAll(pageable);
     }
 
     public Pet getPetById(int petsId) {

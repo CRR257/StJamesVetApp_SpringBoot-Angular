@@ -1,12 +1,18 @@
 package com.stJames.service;
 
 import java.util.ArrayList;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
+
+import org.springframework.data.domain.Pageable;
+
 import com.stJames.model.Pet;
 
 public interface PetService {
 	
-	List<Pet> getAllPets();
+	Page<Pet>getAllPets(Pageable pageable);
 	Pet getPetById(int petsId);
 	ArrayList<Pet> getPetByName(String petsName);
 	ArrayList<Pet> getPetByStringValue(String strValue);

@@ -19,7 +19,10 @@
   <app-pets-list
     *ngIf="!showModifyPets"
     [pets]="pets"
+    [page]="page"
+    [pages]="pages"
     [petDeleted]="petDeleted"
+    (pageSelected)="pageSelected($event)"
     (deletePetsById)="deletePetsById($event)"
     (modifyPetsById)="modifyPetsById($event)"
   ></app-pets-list>

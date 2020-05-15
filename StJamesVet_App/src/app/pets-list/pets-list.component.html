@@ -25,6 +25,11 @@
         <button (click)="modifyPetSelected(pet.petsId)" class="modify">Modify</button>
     </td>
 </tr>
+<div class="pagination">
+    <li *ngFor="let p of pages; let i=index">
+        <a href="#" (click)="setPage(i, $event)" class="pagination-number">{{i +1}}</a>
+    </li>
+</div>
 <div *ngIf="showDeleteConfirmation" class="popup">
     <p>Are you sure you want to delete?</p>
     <button class="button-submit" (click)="deleteConfirm(true)">Yes</button>

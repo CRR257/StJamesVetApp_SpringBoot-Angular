@@ -26,6 +26,10 @@ button {
     font-size: 12px;
 }
 
+li {
+  list-style-type: none;
+}
+
 .button {
   margin: 3rem 0;
   &-submit {
@@ -104,3 +108,4 @@ input, select {
     font-weight: 600;
   }
 }
+

@@ -2,16 +2,18 @@ package com.stJames.repository;
 
 import java.util.ArrayList;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.stJames.model.Pet;
 
 @Repository("PetRepository")
-public interface PetRepository extends CrudRepository<Pet, Integer> {
-	
+public interface PetRepository extends PagingAndSortingRepository<Pet, Integer> {
+
 	@Query("select pet from Pet pet where petsName = :petsName")
 	public  ArrayList<Pet> findByName(@Param("petsName") final String petsName);
 	

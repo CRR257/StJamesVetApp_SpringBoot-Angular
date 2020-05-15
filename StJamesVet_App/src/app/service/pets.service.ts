@@ -12,8 +12,12 @@ export class PetsService {
 
   PETS_API: string = "http://localhost:8080/v1"
 
-  getPets(): Observable<any> {
-    return this.service.get(`${this.PETS_API}/pets/`)
+  // getPets(): Observable<any> {
+  //   return this.service.get(`${this.PETS_API}/pets?page=1&size=5`)
+  // }
+  getPets(page: number): Observable<any> {
+    console.log(page)
+    return this.service.get(`${this.PETS_API}/pets?page=${page}`)
   }
 
   searchPetsId(id: number): Observable<any> {
