@@ -17,7 +17,7 @@ public interface PetRepository extends PagingAndSortingRepository<Pet, Integer> 
 	@Query("select pet from Pet pet where petsName = :petsName")
 	public  ArrayList<Pet> findByName(@Param("petsName") final String petsName);
 	
-	@Query("select pet from Pet pet where lower(petsName) = lower(:strValue)  or lower(petsBreed) = lower(:strValue) "
+	@Query("select pet from Pet pet where lower(petsName) = lower(:strValue) or lower(petsBreed) = lower(:strValue) "
 			+ " or lower(ownersNif) = lower(:strValue) or lower(petsSpecies) = lower(:strValue) "
 			+ "or petsDateOfBirth = :strValue")
 	public  ArrayList<Pet> findByStringValue(@Param("strValue") final String strValue);

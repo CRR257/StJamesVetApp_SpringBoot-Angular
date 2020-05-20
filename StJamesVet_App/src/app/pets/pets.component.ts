@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { PetsService } from '../service/pets.service';
+import { PetsService } from '../service/petsService/pets.service';
 import { Pets } from '../interface/petsInterface';
 
 @Component({

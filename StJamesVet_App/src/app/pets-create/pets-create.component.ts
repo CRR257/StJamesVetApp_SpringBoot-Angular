@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PetsService } from '../service/pets.service';
+import { PetsService } from '../service/petsService/pets.service';
 
 @Component({
   selector: 'app-pets-create',

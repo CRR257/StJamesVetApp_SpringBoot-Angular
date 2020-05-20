@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stJames.model.Pet;
@@ -26,14 +25,13 @@ public class PetController {
 
     @Autowired
     PetServiceImpl petService;
-
+    
     @GetMapping("/v1/pets")
     private Page<Pet> getAllPets(Pageable pageable) {
     	Pageable sortedByIdDesc = PageRequest.of(pageable.getPageNumber(), 5);
         return petService.getAllPets(sortedByIdDesc);
     }
 	 
-    
     @PutMapping("/v1/pets/{petsId}")
     private Pet modifyPet(@RequestBody Pet pet, @PathVariable int petsId) {
     	petService.modifyPet(pet, petsId);

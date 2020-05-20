@@ -10,7 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.stJames.exception.NoDataFoundException;
 import com.stJames.model.Pet;
+import com.stJames.model.User;
 import com.stJames.repository.PetRepository;
+import com.stJames.repository.UserRepository;
 import com.stJames.service.PetService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,12 +23,13 @@ public class PetServiceImpl implements PetService {
 	
     @Autowired
     PetRepository petRepository;
-
+    
     @Override
     public Page<Pet> getAllPets(Pageable pageable) {
     	return petRepository.findAll(pageable);
     }
-
+    
+    
     public Pet getPetById(int petsId) {
         return petRepository.findById(petsId).get();
     }

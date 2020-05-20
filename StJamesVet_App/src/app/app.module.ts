@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -11,6 +11,12 @@ import { PetsSearchComponent } from './pets-search/pets-search.component';
 import { HeaderComponent } from './header/header.component';
 import { PetsCreateComponent } from './pets-create/pets-create.component';
 import { PetsModifyComponent } from './pets-modify/pets-modify.component';
+import { PetsWelcomeComponent } from './pets-welcome/pets-welcome.component';
+import { PetsAuthComponent } from './pets-auth/pets-auth.component';
+import { FooterComponent } from './footer/footer.component';
+import { BasicAuthHtppInterceptorService } from './service/authService/basic-auth-http-interceptor.service';
+import { LogoutComponent } from './logout/logout.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +26,11 @@ import { PetsModifyComponent } from './pets-modify/pets-modify.component';
     PetsSearchComponent,
     HeaderComponent,
     PetsCreateComponent,
-    PetsModifyComponent
+    PetsModifyComponent,
+    PetsWelcomeComponent,
+    PetsAuthComponent,
+    FooterComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +38,11 @@ import { PetsModifyComponent } from './pets-modify/pets-modify.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {  
+      provide:HTTP_INTERCEPTORS, useClass:BasicAuthHtppInterceptorService, multi:true 
+    }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

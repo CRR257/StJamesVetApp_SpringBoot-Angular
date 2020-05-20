@@ -1,5 +1,5 @@
 .nav {
-    height: 66px;
+    height: 105px;
     border-bottom: 1px solid white;
     background-color: #3e6098;
     padding: 22px;
@@ -11,4 +11,21 @@
         text-decoration: underline;
       }
     }
+    &-title {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      span{
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+      }
+    }
+}
+
+.top-right {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  bottom: 14px;
 }

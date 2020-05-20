@@ -1,7 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { Pets } from '../interface/petsInterface';
+import { Pets } from '../../interface/petsInterface';
+
+// export class Employee {
+//   constructor(
+//     public empId: string,
+//     public name: string,
+//     public designation: string,
+//     public salary: string,
+//   ) { }
+// }
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +21,7 @@ export class PetsService {
 
   PETS_API: string = "http://localhost:8080/v1"
 
-  // getPets(): Observable<any> {
-  //   return this.service.get(`${this.PETS_API}/pets?page=1&size=5`)
-  // }
+
   getPets(page: number): Observable<any> {
     console.log(page)
     return this.service.get(`${this.PETS_API}/pets?page=${page}`)
