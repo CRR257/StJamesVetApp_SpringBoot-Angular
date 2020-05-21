@@ -2,10 +2,10 @@ package com.stJames.service;
 
 import java.util.ArrayList;
 
-import com.stJames.model.User;
+import com.stJames.model.Auth;
 
 public interface UserService {
 
-	ArrayList<User> login(String userEmail);
+	ArrayList<Auth> login(String userEmail);
 }
  

@@ -1,0 +1,21 @@
+.container {
+    &-form {
+        width: 25rem;
+        margin: auto;
+        top: 4rem;
+        position: relative;
+        form {
+        display: flex;
+        flex-direction: column;
+        }
+        button {
+          margin: 0;
+          width: 270px;
+          margin-top: 2px;
+          background-color: #069fb1;
+        }
+        input {
+          width: 270px;
+        }
+}
+}

@@ -4,6 +4,16 @@ Application to manage pets of a veterinary clinic.</br>
 User can create, delete and update a pet and see all pets created in the database.</br>
 User can also search for a pet.
 
+Login:<br>
+
+    user: vet
+    password: password
+
+or
+
+    user: veterinary
+    password: password
+
 ## Instrucions to run the project
 
 ### Start the server:

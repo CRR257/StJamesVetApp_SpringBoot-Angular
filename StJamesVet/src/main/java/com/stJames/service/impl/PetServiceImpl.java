@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.stJames.exception.NoDataFoundException;
 import com.stJames.model.Pet;
-import com.stJames.model.User;
+import com.stJames.model.Auth;
 import com.stJames.repository.PetRepository;
 import com.stJames.repository.UserRepository;
 import com.stJames.service.PetService;

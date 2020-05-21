@@ -2,6 +2,9 @@
   <a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link top-right"
     >LogOut
   </a>
+  <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link top-right"
+  >Login
+</a>
   <div class="nav-title">
   <span>St James Veterinary</span>
 </div>

@@ -13,5 +13,5 @@ INSERT INTO PET VALUES (12, 757333857, '392810H','Cat','british', '29/06/2019', 
 INSERT INTO PET VALUES (13, 757333857, '392810H','Tortoise','russian', '09/01/2010', 0 ,  'Charlie', '-');
 INSERT INTO PET VALUES (14, 757333857, '392810H','Tortoise','russian', '09/01/2010', 0 ,  'Lily', '-');
 INSERT INTO PET VALUES (15, 757333857, '392810H','Dog','akita inu', '21/3/2019', 98745,  'Jack', '-');
-INSERT INTO USERS VALUES (1, 'Clara', 'Rufi', 'a@a.com', 'password', '47732058C', 617555958);
-
+INSERT INTO AUTH VALUES (1, 'vet', 'vet@stjamesvet.com', 'password');
+INSERT INTO AUTH VALUES (2, 'veterinary', 'vet@stjamesvet.com', 'password');

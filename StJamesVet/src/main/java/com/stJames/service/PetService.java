@@ -9,7 +9,7 @@ import java.util.List;
 import org.springframework.data.domain.Pageable;
 
 import com.stJames.model.Pet;
-import com.stJames.model.User;
+import com.stJames.model.Auth;
 
 public interface PetService {
 	

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.stJames.model.User;
+import com.stJames.model.Auth;
 import com.stJames.service.impl.UserServiceImpl;
 
 @RestController
@@ -19,7 +19,7 @@ public class UserController {
 	UserServiceImpl userService;
 
     @GetMapping("/v1/pets/email={userEmail}")
-    private ArrayList<User> login(@PathVariable String userEmail ) {
+    private ArrayList<Auth> login(@PathVariable String userEmail ) {
         return userService.login(userEmail);
     }
 }
