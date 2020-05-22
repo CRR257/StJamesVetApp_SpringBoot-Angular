@@ -1,31 +1,38 @@
 .nav {
-    height: 105px;
-    border-bottom: 1px solid white;
-    background-color: #3e6098;
-    padding: 22px;
-  
-    a {
+  height: 105px;
+  border-bottom: 1px solid #045190;
+  padding: 22px;
+  a {
+    color: white;
+    margin: 0 16px;
+    &.active {
+      text-decoration: underline;
+    }
+  }
+  &-title {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 10px;
+    span {
+      font-family: "Satisfy", cursive;
       color: white;
-      margin: 0 16px;
-      &.active {
-        text-decoration: underline;
-      }
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: 2px;
     }
-    &-title {
-      text-align: center;
+  }
+  &-link {
+    &__bottom-left {
+      position: relative;
+      bottom: 20px;
+    }
+    &__top-right {
       display: flex;
-      justify-content: center;
-      span{
-        color: white;
-        font-size: 20px;
-        font-weight: 600;
-      }
+      justify-content: flex-end;
+      position: relative;
+      bottom: 14px;
     }
-}
-
-.top-right {
-  display: flex;
-  justify-content: flex-end;
-  position: relative;
-  bottom: 14px;
+  }
 }

@@ -1,55 +1,42 @@
 <div class="container-form">
-    <p class="container-title">Pet's Registration</p>
+    <!-- <p class="container-title">Pet's Registration</p> -->
     <form (ngSubmit)="handleSubmit(form, form.valid); form.reset()" #form="ngForm">
         <p class="container-section">Pet's Information </p>
         <div class="container-information">
-            <label>Name </label>
-            <input type="text" name="petsName" [ngModel]="" #petsName="ngModel" required>
+            <input type="text" name="petsName" [ngModel]="" #petsName="ngModel" placeholder="Name" required>
             <p *ngIf="form.submitted && petsName.errors?.required" class="container-information__error">* Name is required</p>
         </div>
          <div class="container-information">
-            <label>Species </label>
-            <select type="text" name="petsSpecies" [ngModel]="" #petsSpecies="ngModel" placeholder="species" required>
-                <option>Cat</option>
-                <option>Dog</option>
-                <option>Rabbit</option>
-                <option>Tortoise</option>
-                <option>Turtle</option>
+            <select name="petsSpecies" [ngModel]="" #petsSpecies="ngModel"  required>
+                <option *ngFor="let specie of species" > {{specie.name}}</option>
             </select>
-            <p *ngIf="form.submitted && petsSpecies.errors?.required" class="container-information__error">* Select a specie</p>
         </div>
          <div class="container-information">
-            <label>Breed </label>
-            <input type="text" name="petsBreed" [ngModel]="" #petsBreed="ngModel" required>
+            <input type="text" name="petsBreed" [ngModel]="" #petsBreed="ngModel" placeholder="Breed" required>
             <p *ngIf="form.submitted && petsBreed.errors?.required" class="container-information__error">* Breed is required</p>
         </div>
          <div class="container-information">
-            <label>Date of Birth </label>
-            <input type="text" name="petsDateOfBirth" [ngModel]="" #petsDateOfBirth="ngModel" required>
+            <input type="text" name="petsDateOfBirth" [ngModel]="" #petsDateOfBirth="ngModel" placeholder="Date of Birth" required>
             <p *ngIf="form.submitted && petsDateOfBirth.errors?.required" class="container-information__error">* Date of Birth is required</p>
         </div>
         <div class="container-information">
-            <label>Microchip number</label>
-            <input type="number" name="petsMicrochipNumber" [ngModel]="" #petsMicrochipNumber="ngModel" required>
+            <input type="number" name="petsMicrochipNumber" [ngModel]="" #petsMicrochipNumber="ngModel" placeholder="Microchip number" required>
             <p *ngIf="form.submitted && petsMicrochipNumber.errors?.required" class="container-information__error">* Microchip number is required</p>
         </div>
          <div class="container-information__textarea">
-            <label>Observations </label>
-            <textarea type="text" name="petsObservations" [ngModel]="" #petsObservations="ngModel" rows="10"></textarea>
+            <textarea type="text" name="petsObservations" [ngModel]="" #petsObservations="ngModel" rows="10" placeholder="Observations"></textarea>
         </div>
-        <br/>
-        <p class="container-section">Owner's Information </p>
          <div class="container-information">
-            <label>Owner's Nif  </label>
-            <input type="text" name="ownersNif" [ngModel]="" #ownersNif="ngModel" required>
+            <input type="text" name="ownersNif" [ngModel]="" #ownersNif="ngModel" placeholder="Owner's Nif" required>
             <p *ngIf="form.submitted && ownersNif.errors?.required" class="container-information__error">* Owner's Nif is required</p>
         </div>
          <div class="container-information">
-            <label>Owner's Mobile Number </label>
-            <input type="number" name="ownersMobileNumber" [ngModel]="" #ownersMobileNumber="ngModel" required>
+            <input type="number" name="ownersMobileNumber" [ngModel]="" #ownersMobileNumber="ngModel" placeholder="Owner's Mobile Number" required>
             <p *ngIf="form.submitted && ownersMobileNumber.errors?.required" class="container-information__error">* Owner's Mobile Number is required</p>
         </div>
-        <button type="submit" class="button-submit">Submit</button>
-        <button type="submit" class="button-cancel" [routerLink]="'/'">Cancel</button>
+        <div class="container-buttons">
+        <button type="submit">Submit</button>
+        <button type="submit" class="button-goBack" [routerLink]="'/'">Cancel</button>
+        </div>
     </form>
 </div>

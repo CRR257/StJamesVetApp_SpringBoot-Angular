@@ -1,21 +1,13 @@
 .container {
-    &-form {
-        width: 25rem;
-        margin: auto;
-        top: 4rem;
-        position: relative;
-        form {
-        display: flex;
-        flex-direction: column;
-        }
-        button {
-          margin: 0;
-          width: 270px;
-          margin-top: 2px;
-          background-color: #069fb1;
-        }
-        input {
-          width: 270px;
-        }
-}
+  &-form {
+    width: 25rem;
+    margin: auto;
+    bottom: 6rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    min-height: 40em;
+  }
 }

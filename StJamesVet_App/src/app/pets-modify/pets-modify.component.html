@@ -49,8 +49,10 @@
             <input type="number" name="ownersMobileNumber" [ngModel]="petToModify[0].ownersMobileNumber" #ownersMobileNumber="ngModel" required>
             <p *ngIf="form.submitted && ownersMobileNumber.errors?.required" class="container-information__error">* Owner's Mobile Number is required</p>
         </div>
-        <button type="submit" class="button-submit">Submit</button>
-        <button type="submit" class="button-cancel" (click)="hideUpdatePet(false)">Cancel</button>
+        <div class="container-buttons">
+        <button type="submit">Submit</button>
+        <button type="submit" class="button-goBack" (click)="hideUpdatePet(false)">Cancel</button>
+        </div>
     </form>
 </div>
 

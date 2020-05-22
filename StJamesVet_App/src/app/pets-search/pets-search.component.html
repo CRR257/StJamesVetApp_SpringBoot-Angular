@@ -1,5 +1,5 @@
 <input type="text" #param placeholder="Search Pet..." required>
-<button (click)="searchPetByValue(param.value)">Search</button>
+<button class="button-search" (click)="searchPetByValue(param.value)">Search</button>
 <div *ngIf="showPetResult" class="table">
 <p>Result's Table:</p>
 <tr>

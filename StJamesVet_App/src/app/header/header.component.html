@@ -1,14 +1,14 @@
 <nav class="nav">
-  <a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link top-right"
+  <a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link__top-right"
     >LogOut
   </a>
-  <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link top-right"
+  <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link__top-right"
   >Login
 </a>
   <div class="nav-title">
   <span>St James Veterinary</span>
 </div>
-  <div class="nav-links">
+  <div class="nav-link__bottom-left">
   <a *ngIf="loginService.isUserLoggedIn()" routerLink="/home">Home</a>
   <a *ngIf="loginService.isUserLoggedIn()" routerLink="/create">Create Pet</a>
 </div>
