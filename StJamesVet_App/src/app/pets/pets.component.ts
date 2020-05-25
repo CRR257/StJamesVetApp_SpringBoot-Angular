@@ -13,6 +13,7 @@ export class PetsComponent implements OnInit {
   totalPets: number;
   petsSearchResult: Array<any>;
   petToModify: Array<any>;
+  petModified: Array<any>;
   petDeleted: number;
   error: String;
   showError: boolean = false;
@@ -39,16 +40,14 @@ export class PetsComponent implements OnInit {
     this.petsService.getPets(this.page).subscribe(
       (data) => {
         console.log(data)
-      this.pets = data['content'];
-      this.pages = new Array(data['totalPages']);
-      this.totalPets = data.totalElements;
-      this.error = '';
-      console.log(this.pets)
-      console.log(this.totalPets)
-    },
-    (error) => {
-      this.error = error.error.message;
-    })
+        this.pets = data['content'];
+        this.pages = new Array(data['totalPages']);
+        this.totalPets = data.totalElements;
+        this.error = '';
+      },
+      (error) => {
+        this.error = error.error.message;
+      })
   }
 
   searchPetByNumber(numValue: number) {
@@ -57,10 +56,10 @@ export class PetsComponent implements OnInit {
       this.error = '';
       this.showError = false;
     },
-    (error) => {
-      this.error = error.error.message;
-      this.petsSearchResult = [];
-    })     
+      (error) => {
+        this.error = error.error.message;
+        this.petsSearchResult = [];
+      })
   }
 
   searchPetByString(strValue: string) {
@@ -78,37 +77,43 @@ export class PetsComponent implements OnInit {
 
   deletePetsById(petsId: number) {
     this.petsService.deletePets(petsId).subscribe((data: any) => {
-      if(petsId === data){
-      this.petDeleted = data;
+      if (petsId === data) {
+        this.petDeleted = data;
       }
-      console.log(this.totalPets)
-      console.log(this.page)
-      let getLastPage = (this.totalPets -1) / 5
-      if(getLastPage % 1 === 0) {
-        this.page = this.page -1
+      let getLastPage = (this.totalPets - 1) / 5
+      if (getLastPage % 1 === 0) {
+        this.page = this.page - 1
       }
       this.getAllPets();
     })
   }
 
   modifyPetsById(petsId: number) {
-    this.showModifyPets = true;
     this.petsIdModifying = petsId;
     this.pets.forEach((pet, index) => {
       if (pet.petsId === petsId) {
-        this.petToModify.push(pet);
+        this.petToModify = pet;
+        this.showModifyPets = true;
       }
     })
   }
 
   updatePet(pet: Pets) {
+    console.log(this.petModified)
     let petsId = this.petsIdModifying;
-    this.petsService.modifyPet(pet, petsId).subscribe();
+    this.petsService.modifyPet(pet, petsId).subscribe(
+      (data: any) => {
+        if (pet.petsId === data.petsId) {
+          this.petModified = data;
+        }
+      }
+    );
   }
 
   showUptadetePet(value: boolean) {
     this.showModifyPets = false;
     this.petToModify = [];
-    console.log(this.petToModify)
+    this.getAllPets();
   }
+
 }

@@ -1,12 +1,13 @@
 .warning {
     text-align: center;
-    border: 1px solid grey;
-    padding: 1.5rem;
-    max-width: 220px;
+    border: 1px solid white;
+    max-width: 180px;
     margin: auto;
     position: relative;
     bottom: 2rem;
-    background-color: #d6d6d6;
+    background-color: navy;
+    color: white;
+    padding: 0 10px;
     &-text {
         font-weight: 600;
       

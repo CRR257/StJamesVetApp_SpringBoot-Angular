@@ -1,27 +1,32 @@
 * {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
 body {
-  font-family: 'Mukta', sans-serif;
+  font-family: "Mukta", sans-serif;
   margin: unset;
   letter-spacing: 1.3px;
   min-height: 100vh;
   margin: 0;
-  background: rgb(0,0,0);
-  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(13,143,233,1) 100%);
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(13, 143, 233, 1) 100%
+  );
 }
 
 button {
-    letter-spacing: 1.1px;
-    cursor: pointer;
-    border-radius: 2px;
-    border: 1px solid grey;
-    padding: 8px;
-    margin: 10px;
-    font-size: 12px;
+  letter-spacing: 1.1px;
+  cursor: pointer;
+  border-radius: 2px;
+  border: 1px solid grey;
+  padding: 8px;
+  margin: 10px;
+  font-size: 12px;
+  min-width: 60px;
 }
 
 li {
@@ -30,11 +35,17 @@ li {
 
 .button {
   margin: 3rem 0;
-  &-submit {
-      background-color: #f5b94b;    
+  &-warn {
+    background-color: #f5b94b;
+  }
+  &-warn:hover {
+    background-color: orange;
   }
   &-cancel {
     background-color: #fc7159fa;
+  }
+  &-cancel:hover {
+    background-color: red;
   }
   &-goBack {
     background-color: black !important;
@@ -46,40 +57,62 @@ li {
     color: white;
     border-radius: 3px;
   }
+  &-toggle {
+    margin: 10px 0;
+    background-color: #2f76bc;
+    color: white;
+    border: 1px solid white;
+  }
 }
 
 .table {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    padding: 3rem 0 3rem 0;
-    overflow-x: auto;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  padding: 3rem 0 3rem 0;
+  overflow-x: auto;
+  &-observations {
+    /* white-space: nowrap; */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 1px;
   }
-  
-.table td, .table th {
-    border: 1px solid rgba(221, 221, 221, 0.322);
-    padding: 8px;
-    text-align: center;
-    width: 100px;
-  }
-  
-.table tr:nth-child(even){background-color: #b4b4b4;}
-.table tr:nth-child(odd){background-color: rgb(212, 211, 211);}
-.table tr:hover {background-color: #a7a7a7;}
-  
+}
+
+.table td,
 .table th {
-    padding: 14px;
-    background-color: #f19e64;
-    color: white;
-    max-width: 160px;
-    width: 160px;
+  border: 1px solid rgba(221, 221, 221, 0.322);
+  padding: 8px;
+  text-align: center;
+  width: 100px;
+}
+
+.table tr:nth-child(even) {
+  background-color: #b4b4b4;
+  border-top: 2px solid #b9b9b9;
+}
+.table tr:nth-child(odd) {
+  background-color: rgb(212, 211, 211);
+  border-top: 2px solid #b9b9b9;
+}
+.table tr:hover {
+  background-color: #a7a7a7;
+}
+
+.table th {
+  padding: 14px;
+  background-color: #030388;
+  color: white;
+  max-width: 160px;
+  width: 160px;
 }
 
 .container {
   padding: 1rem;
-  min-height: 20em
+  min-height: 20em;
 }
 
-input, select {
+input,
+select {
   width: 250px;
   border-radius: 3px;
   border: 1px solid #a9a7a7;
@@ -96,11 +129,11 @@ input, select {
     margin-top: 10px;
     border-radius: 3px;
     min-height: 60em;
-    button {
+    &__button {
       margin: 0;
       width: 270px;
       margin-top: 2px;
-      background: rgb(169,14,14);
+      background: rgb(169, 14, 14);
       height: 40px;
       font-size: 14px;
     }
@@ -108,18 +141,17 @@ input, select {
   &-buttons {
     display: flex;
     flex-direction: column;
-}
-
+  }
   &-information {
     padding: 5px 0;
-    &__textarea{
-        display: flex;
-        flex-direction: column;
-        padding: 5px 0;
+    &__textarea {
+      display: flex;
+      flex-direction: column;
+      padding: 5px 0;
     }
     &__error {
-        color: #fd5739;
-        margin: 5px 0;     
+      color: #fd5739;
+      margin: 5px 0;
     }
   }
   &-title {
@@ -128,9 +160,25 @@ input, select {
     font-weight: 800;
     text-decoration: underline;
     padding-bottom: 14px;
+    color: white;
   }
   &-section {
     font-weight: 600;
+    color: white;
+    text-decoration: underline;
   }
 }
 
+.popup {
+  background-color: #120d6b;
+  color: white;
+  justify-content: center;
+  padding: 3rem;
+  border: 3px solid #f1f1f1;
+  width: 360px;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

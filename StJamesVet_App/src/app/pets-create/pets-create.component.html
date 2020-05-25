@@ -1,7 +1,6 @@
 <div class="container-form">
-    <!-- <p class="container-title">Pet's Registration</p> -->
     <form (ngSubmit)="handleSubmit(form, form.valid); form.reset()" #form="ngForm">
-        <p class="container-section">Pet's Information </p>
+        <p class="container-section">Create a new Pet</p>
         <div class="container-information">
             <input type="text" name="petsName" [ngModel]="" #petsName="ngModel" placeholder="Name" required>
             <p *ngIf="form.submitted && petsName.errors?.required" class="container-information__error">* Name is required</p>
@@ -35,8 +34,12 @@
             <p *ngIf="form.submitted && ownersMobileNumber.errors?.required" class="container-information__error">* Owner's Mobile Number is required</p>
         </div>
         <div class="container-buttons">
-        <button type="submit">Submit</button>
-        <button type="submit" class="button-goBack" [routerLink]="'/'">Cancel</button>
+        <button type="submit" class="container-form__button">Submit</button>
+        <button type="submit" class="container-form__button button-goBack" [routerLink]="'/home'">Cancel</button>
         </div>
     </form>
+    <div *ngIf="petCreated && showFeedBack" class="popup">
+        <p>{{petCreated[0].petsName}} with id {{petCreated[0].petsId}} correctly created!</p>
+        <button class="button-warn" (click)="closeFeedBack()">Close</button>
+    </div>
 </div>

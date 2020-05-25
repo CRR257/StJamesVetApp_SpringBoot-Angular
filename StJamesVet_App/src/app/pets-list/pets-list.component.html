@@ -1,5 +1,5 @@
 <div class="table">
-<tr>
+  <tr>
     <th>Pet Id</th>
     <th>Microchip</th>
     <th>Name</th>
@@ -10,33 +10,40 @@
     <th>Ower's Nif</th>
     <th>Owner's Mobile number</th>
     <th>Actions</th>
-</tr>
-<tr *ngFor="let pet of pets">
-    <td>{{pet.petsId}}</td>
-    <td>{{pet.petsMicrochipNumber}}</td>
-    <td>{{pet.petsName}}</td>
-    <td>{{pet.petsSpecies}}</td>
-    <td>{{pet.petsBreed}}</td>
-    <td>{{pet.petsDateOfBirth}}</td>
-    <td>{{pet.petsObservations}}</td>
-    <td>{{pet.ownersNif}}</td>
-    <td>{{pet.ownersMobileNumber}}</td>
-    <td><button (click)="deletePetSelected(pet.petsId)" class="delete">Delete</button>
-        <button (click)="modifyPetSelected(pet.petsId)" class="modify">Modify</button>
+  </tr>
+  <tr *ngFor="let pet of pets">
+    <td>{{ pet.petsId }}</td>
+    <td>{{ pet.petsMicrochipNumber }}</td>
+    <td>{{ pet.petsName }}</td>
+    <td>{{ pet.petsSpecies }}</td>
+    <td>{{ pet.petsBreed }}</td>
+    <td>{{ pet.petsDateOfBirth }}</td>
+    <td class="table-observations">{{ pet.petsObservations }}</td>
+    <td>{{ pet.ownersNif }}</td>
+    <td>{{ pet.ownersMobileNumber }}</td>
+    <td>
+      <button (click)="deletePetSelected(pet.petsId, pet.petsName)" class="button-cancel">
+        Delete
+      </button>
+      <button (click)="modifyPetSelected(pet.petsId)" class="button-warn">
+        Modify
+      </button>
     </td>
-</tr>
-<div class="pagination">
-    <li *ngFor="let p of pages; let i=index">
-        <a href="#" (click)="setPage(i, $event)" class="pagination-number">{{i +1}}</a>
+  </tr>
+  <div class="pagination">
+    <li *ngFor="let p of pages; let i = index">
+      <a href="#" (click)="setPage(i, $event)" class="pagination-number">{{
+        i + 1
+      }}</a>
     </li>
-</div>
-<div *ngIf="showDeleteConfirmation" class="popup">
-    <p>Are you sure you want to delete?</p>
-    <button class="button-submit" (click)="deleteConfirm(true)">Yes</button>
+  </div>
+  <div *ngIf="showDeleteConfirmation" class="popup">
+    <p>Are you sure you want to delete {{ this.namePetSelectedToDelete }} ?</p>
+    <button class="button-warn" (click)="deleteConfirm(true)">Yes</button>
     <button class="button-cancel" (click)="deleteConfirm(false)">No</button>
-</div>
-<div *ngIf="petDeleted && showDeleteFeedBack" class="popup">
-    <p>Pet correctly deleted</p>
-    <button class="button-submit" (click)="closeDeleteFeedBack()">Close</button>
-</div>
+  </div>
+  <div *ngIf="petDeleted && showDeleteFeedBack" class="popup">
+    <p>{{ this.namePetSelectedToDelete }} correctly deleted</p>
+    <button class="button-warn" (click)="closeFeedBack()">Close</button>
+  </div>
 </div>

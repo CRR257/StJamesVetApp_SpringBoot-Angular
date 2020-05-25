@@ -1,58 +1,73 @@
 <div class="container-form">
-    <p class="container-title">Update {{petToModify[0].petsName}}</p>
+    <p class="container-title">Update {{petToModify.petsName}}</p>
     <form (ngSubmit)="handleSubmit(form, form.valid); form.reset()" #form="ngForm">
         <p class="container-section">Pet's Information </p>
         <div class="container-information">
+            <input name="petsId" [ngModel]="petToModify.petsId" #petsId="ngModel" type="hidden">
             <label>Name </label>
-            <input type="text" name="petsName" [ngModel]="petToModify[0].petsName" #petsName="ngModel" required>
-            <p *ngIf="form.submitted && petsName.errors?.required" class="container-information__error">* Name is required</p>
+            <input type="text" name="petsName" [ngModel]="petToModify.petsName" #petsName="ngModel" required>
+            <p *ngIf="form.submitted && petsName.errors?.required" class="container-information__error">* Name is
+                required</p>
         </div>
-         <div class="container-information">
+        <div class="container-information">
             <label>Species </label>
-            <select type="text" name="petsSpecies" [ngModel]="petToModify[0].petsSpecies" #petsSpecies="ngModel" required>
+            <select type="text" name="petsSpecies" [ngModel]="petToModify.petsSpecies" #petsSpecies="ngModel" required>
                 <option>Cat</option>
                 <option>Dog</option>
                 <option>Rabbit</option>
                 <option>Tortoise</option>
                 <option>Turtle</option>
             </select>
-            <p *ngIf="form.submitted && petsSpecies.errors?.required" class="container-information__error">* Select a specie</p>
+            <p *ngIf="form.submitted && petsSpecies.errors?.required" class="container-information__error">* Select a
+                specie</p>
         </div>
-         <div class="container-information">
+        <div class="container-information">
             <label>Breed </label>
-            <input type="text" name="petsBreed" [ngModel]="petToModify[0].petsBreed" #petsBreed="ngModel" required>
-            <p *ngIf="form.submitted && petsBreed.errors?.required" class="container-information__error">* Breed is required</p>
+            <input type="text" name="petsBreed" [ngModel]="petToModify.petsBreed" #petsBreed="ngModel" required>
+            <p *ngIf="form.submitted && petsBreed.errors?.required" class="container-information__error">* Breed is
+                required</p>
         </div>
-         <div class="container-information">
+        <div class="container-information">
             <label>Date of Birth </label>
-            <input type="text" name="petsDateOfBirth" [ngModel]="petToModify[0].petsDateOfBirth" #petsDateOfBirth="ngModel" required>
-            <p *ngIf="form.submitted && petsDateOfBirth.errors?.required" class="container-information__error">* Date of Birth is required</p>
+            <input type="text" name="petsDateOfBirth" [ngModel]="petToModify.petsDateOfBirth" #petsDateOfBirth="ngModel"
+                required>
+            <p *ngIf="form.submitted && petsDateOfBirth.errors?.required" class="container-information__error">* Date of
+                Birth is required</p>
         </div>
         <div class="container-information">
             <label>Microchip number</label>
-            <input type="number" name="petsMicrochipNumber" [ngModel]="petToModify[0].petsMicrochipNumber" #petsMicrochipNumber="ngModel" required>
-            <p *ngIf="form.submitted && petsMicrochipNumber.errors?.required" class="container-information__error">* Microchip number is required</p>
+            <input type="number" name="petsMicrochipNumber" [ngModel]="petToModify.petsMicrochipNumber"
+                #petsMicrochipNumber="ngModel" required>
+            <p *ngIf="form.submitted && petsMicrochipNumber.errors?.required" class="container-information__error">*
+                Microchip number is required</p>
         </div>
-         <div class="container-information__textarea">
+        <div class="container-information__textarea">
             <label>Observations </label>
-            <textarea type="text" name="petsObservations" [ngModel]="petToModify[0].petsObservations" #petsObservations="ngModel" rows="10"></textarea>
+            <textarea type="text" name="petsObservations" [ngModel]="petToModify.petsObservations"
+                #petsObservations="ngModel" rows="10"></textarea>
         </div>
-        <br/>
+        <br />
         <p class="container-section">Owner's Information </p>
-         <div class="container-information">
-            <label>Owner's Nif  </label>
-            <input type="text" name="ownersNif" [ngModel]="petToModify[0].ownersNif" #ownersNif="ngModel" required>
-            <p *ngIf="form.submitted && ownersNif.errors?.required" class="container-information__error">* Owner's Nif is required</p>
+        <div class="container-information">
+            <label>Owner's Nif </label>
+            <input type="text" name="ownersNif" [ngModel]="petToModify.ownersNif" #ownersNif="ngModel" required>
+            <p *ngIf="form.submitted && ownersNif.errors?.required" class="container-information__error">* Owner's Nif
+                is required</p>
         </div>
-         <div class="container-information">
+        <div class="container-information">
             <label>Owner's Mobile Number </label>
-            <input type="number" name="ownersMobileNumber" [ngModel]="petToModify[0].ownersMobileNumber" #ownersMobileNumber="ngModel" required>
-            <p *ngIf="form.submitted && ownersMobileNumber.errors?.required" class="container-information__error">* Owner's Mobile Number is required</p>
+            <input type="number" name="ownersMobileNumber" [ngModel]="petToModify.ownersMobileNumber"
+                #ownersMobileNumber="ngModel" required>
+            <p *ngIf="form.submitted && ownersMobileNumber.errors?.required" class="container-information__error">*
+                Owner's Mobile Number is required</p>
         </div>
         <div class="container-buttons">
-        <button type="submit">Submit</button>
-        <button type="submit" class="button-goBack" (click)="hideUpdatePet(false)">Cancel</button>
+            <button type="submit" class="container-form__button">Submit</button>
+            <button type="submit" class="container-form__button button-goBack" (click)="hideUpdatePet(false)">Cancel</button>
+        </div>
+        <div *ngIf="petModified && showFeedBack" class="popup">
+            <p>{{petModified.petsName}} correctly modified</p>
+            <button class="button-warn" (click)="closeFeedBack()">Close</button>
         </div>
     </form>
 </div>
-

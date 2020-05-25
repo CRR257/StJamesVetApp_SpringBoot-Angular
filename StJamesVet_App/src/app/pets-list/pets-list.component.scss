@@ -1,28 +1,3 @@
-button {
-    border: 1px solid grey;
-}
-.delete {
-    background-color: tomato;
-}
-
-.modify {
-    background-color: orange;
-}
-
-.popup {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -250px;
-    margin-left: -200px;
-    background-color: grey;
-    justify-content: center;
-    padding: 3rem;
-    border: 3px solid #f1f1f1;
-    width: 360px;
-    text-align: center;
-}
-
 .pagination {
     display: flex;
     justify-content: center;

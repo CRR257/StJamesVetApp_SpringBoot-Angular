@@ -12,6 +12,7 @@ export class PetsListComponent implements OnInit {
   showDeleteConfirmation: boolean = false;
   showDeleteFeedBack: boolean = false;
   idPetSeletedToDelete: number;
+  namePetSelectedToDelete: string;
 
   constructor() { }
 
@@ -43,12 +44,14 @@ export class PetsListComponent implements OnInit {
     this.pageSelected.emit(i);
   }
   
-  deletePetSelected(petsId: number) {
+  deletePetSelected(petsId: number, petsName: string) {
     this.showDeleteConfirmation = true;
+    this.namePetSelectedToDelete = petsName;
     this.idPetSeletedToDelete = petsId;
   }
 
   modifyPetSelected(petsId: number) {
+    console.log(petsId)
     this.modifyPetsById.emit(petsId);
   }
 
@@ -60,7 +63,7 @@ export class PetsListComponent implements OnInit {
     this.showDeleteConfirmation = false;
   }
 
-  closeDeleteFeedBack() {
+  closeFeedBack() {
     this.showDeleteFeedBack = false;
   }
   

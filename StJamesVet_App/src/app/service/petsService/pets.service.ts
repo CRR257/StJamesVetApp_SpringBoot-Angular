@@ -3,15 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { Pets } from '../../interface/petsInterface';
 
-// export class Employee {
-//   constructor(
-//     public empId: string,
-//     public name: string,
-//     public designation: string,
-//     public salary: string,
-//   ) { }
-// }
-
 @Injectable({
   providedIn: 'root'
 })

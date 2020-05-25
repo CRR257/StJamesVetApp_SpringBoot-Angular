@@ -12,6 +12,7 @@ export class PetsSearchComponent implements OnInit {
   showPetResult: boolean = false;
   numValue: number;
   strValue: string;
+  hideTable: boolean = false;
 
   constructor() { }
 
@@ -28,6 +29,7 @@ export class PetsSearchComponent implements OnInit {
   searchPetByNumber: EventEmitter<number> = new EventEmitter();
 
   searchPetByValue(value: any) {
+    this.hideTable = false;
     console.log(value)
     console.log(typeof(value))
     var reg = /^\d+$/;
@@ -43,15 +45,17 @@ export class PetsSearchComponent implements OnInit {
   }
 
   searchPetByNum(numValue: number){
-    console.log(numValue)
     this.searchPetByNumber.emit(numValue);
     this.showPetResult = true;
   }
 
   searchPetByStr(strValue: string){
-    console.log(strValue);
     this.searchPetByString.emit(strValue);
     this.showPetResult = true;
+  }
+
+  hideTableOnClick(value: boolean) {
+    this.hideTable = value;
   }
 
 }

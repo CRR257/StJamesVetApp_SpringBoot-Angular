@@ -10,8 +10,8 @@
   </div>
   <app-pets-modify
     *ngIf="showModifyPets"
-    [pets]="pets"
     [petToModify]="petToModify"
+    [petModified]="petModified"
     (updatePet)="updatePet($event)"
     (showUptadetePet)="showUptadetePet($event)"
   ></app-pets-modify>

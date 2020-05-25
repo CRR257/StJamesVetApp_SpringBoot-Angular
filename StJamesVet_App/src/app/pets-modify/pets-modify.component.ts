@@ -6,18 +6,20 @@ import { Pets } from '../interface/petsInterface';
   templateUrl: './pets-modify.component.html',
   styleUrls: ['./pets-modify.component.scss']
 })
+
 export class PetsModifyComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit(): void { }
 
+  showFeedBack: boolean;
 
   @Input()
-  pets: Pets[];
+  petToModify: any;
 
   @Input()
-  petToModify: Pets[];
+  petModified: any;
 
   @Output()
   updatePet: EventEmitter<Pets> = new EventEmitter;
@@ -28,12 +30,18 @@ export class PetsModifyComponent implements OnInit {
   handleSubmit(form: any, valid: boolean) {
     console.log(form.value);
     if (valid) {
-     this.updatePet.emit(form.value)
+     this.updatePet.emit(form.value);
+     this.showFeedBack = true;
       form.resetForm();
     }
   }
 
   hideUpdatePet(value: boolean) {
     this.showUptadetePet.emit(value);
+  }
+
+  closeFeedBack() {
+    this.showFeedBack = false;
+    this.hideUpdatePet(false);
   }
 }
