@@ -9,6 +9,11 @@ Login:<br>
     user: vet
     password: password
 
+or
+
+    user: veterinary
+    password: password
+
 ## Instrucions to run the project
 
 ### Start the server:

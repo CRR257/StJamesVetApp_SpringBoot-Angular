@@ -6,6 +6,7 @@ import { PetsWelcomeComponent } from './pets-welcome/pets-welcome.component';
 import {LogoutComponent} from './logout/logout.component';
 import { AuthGaurdService } from './service/authService/auth-gaurd.service';
 import { PetsAuthComponent } from './pets-auth/pets-auth.component';
+import { PetsContactComponent } from './pets-contact/pets-contact.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: PetsAuthComponent },
   { path: 'home', component: PetsComponent, canActivate:[AuthGaurdService] },
   { path: 'create', component: PetsCreateComponent,canActivate:[AuthGaurdService] },
+  { path: 'contact', component: PetsContactComponent },
   { path: 'logout', component: LogoutComponent ,canActivate:[AuthGaurdService]},
 ];
 

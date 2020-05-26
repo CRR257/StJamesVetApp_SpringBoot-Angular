@@ -1,13 +1,11 @@
 .nav {
-  height: 105px;
+  height: 115px;
   border-bottom: 1px solid #045190;
   padding: 22px;
   a {
     color: white;
     margin: 0 16px;
-    &.active {
-      text-decoration: underline;
-    }
+    text-decoration: none;
   }
   &-title {
     text-align: center;
@@ -17,22 +15,27 @@
     bottom: 10px;
     span {
       font-family: "Satisfy", cursive;
-      color: white;
+      color: #221f5d;
       font-size: 30px;
       font-weight: 600;
       letter-spacing: 2px;
     }
   }
   &-link {
-    &__bottom-left {
+    &__bottom {
       position: relative;
-      bottom: 20px;
+      bottom: 5px;
+      display: flex;
+      justify-content: space-between;
     }
     &__top-right {
       display: flex;
       justify-content: flex-end;
       position: relative;
       bottom: 14px;
+    }
+    &__selected {
+      text-decoration: underline !important;
     }
   }
 }

@@ -6,17 +6,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.stJames.exception.NoDataFoundException;
 import com.stJames.model.Pet;
-import com.stJames.model.Auth;
 import com.stJames.repository.PetRepository;
-import com.stJames.repository.UserRepository;
 import com.stJames.service.PetService;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 
 @Service("petService")
 public class PetServiceImpl implements PetService {

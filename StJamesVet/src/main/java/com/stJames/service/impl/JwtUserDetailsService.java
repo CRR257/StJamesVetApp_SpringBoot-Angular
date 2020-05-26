@@ -13,8 +13,6 @@ import org.springframework.stereotype.Service;
 
 import com.stJames.model.Auth;
 import com.stJames.repository.UserRepository;
-//import com.stJames.repository.UserRepository;
-//import com.stJames.model.Users;
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService {

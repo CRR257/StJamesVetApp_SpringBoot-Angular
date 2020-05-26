@@ -2,14 +2,9 @@ package com.stJames.service;
 
 import java.util.ArrayList;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import java.util.List;
-
 import org.springframework.data.domain.Pageable;
 
 import com.stJames.model.Pet;
-import com.stJames.model.Auth;
 
 public interface PetService {
 	

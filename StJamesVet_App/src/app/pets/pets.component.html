@@ -6,7 +6,7 @@
     [petsSearchResult]="petsSearchResult"
   ></app-pets-search>
   <div *ngIf="error" class="warning">
-    <p class="warning-text">{{this.error}}</p>
+    <p class="warning-text">{{ this.error }}</p>
   </div>
   <app-pets-modify
     *ngIf="showModifyPets"
@@ -18,11 +18,14 @@
   <app-pets-list
     *ngIf="!showModifyPets"
     [pets]="pets"
-    [page]="page"
-    [pages]="pages"
     [petDeleted]="petDeleted"
-    (pageSelected)="pageSelected($event)"
     (deletePetsById)="deletePetsById($event)"
     (modifyPetsById)="modifyPetsById($event)"
   ></app-pets-list>
+  <app-pagination
+    *ngIf="!showModifyPets"
+    [page]="page"
+    [pages]="pages"
+    (pageSelected)="pageSelected($event)"
+  ></app-pagination>
 </div>

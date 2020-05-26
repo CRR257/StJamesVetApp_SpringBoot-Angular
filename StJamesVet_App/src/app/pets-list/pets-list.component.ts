@@ -22,27 +22,13 @@ export class PetsListComponent implements OnInit {
   pets: Pets[];
 
   @Input()
-  page: number;
-
-  @Input()
-  pages: [];
-
-  @Input()
   petDeleted: number;
-
-  @Output()
-  pageSelected: EventEmitter<number> = new EventEmitter();
 
   @Output()
   deletePetsById: EventEmitter<number> = new EventEmitter();
 
   @Output()
   modifyPetsById: EventEmitter<number> = new EventEmitter();
-
-  setPage(i, event: any) {
-    event.preventDefault();
-    this.pageSelected.emit(i);
-  }
   
   deletePetSelected(petsId: number, petsName: string) {
     this.showDeleteConfirmation = true;

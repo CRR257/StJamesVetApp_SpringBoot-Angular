@@ -16,6 +16,8 @@ import { PetsAuthComponent } from './pets-auth/pets-auth.component';
 import { FooterComponent } from './footer/footer.component';
 import { BasicAuthHtppInterceptorService } from './service/authService/basic-auth-http-interceptor.service';
 import { LogoutComponent } from './logout/logout.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { PetsContactComponent } from './pets-contact/pets-contact.component';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { LogoutComponent } from './logout/logout.component';
     PetsAuthComponent,
     FooterComponent,
     LogoutComponent,
+    PaginationComponent,
+    PetsContactComponent,
   ],
   imports: [
     BrowserModule,

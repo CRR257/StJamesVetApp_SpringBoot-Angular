@@ -1,0 +1,22 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0 2rem 0;
+    a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+    }
+    &-number {
+        font-size: 18px;
+        padding: 10px;
+        color: white;
+    }
+}
+
+
+.active, .a:hover {
+    background-color: #2d2dad;
+    padding: 10px;
+    border-radius: 3px;
+}

@@ -1,0 +1,6 @@
+<div class="pagination">
+  <li *ngFor="let p of pages; let i = index">
+    <a href="#" (click)="setPage(i, $event)" class="pagination-number" [ngClass]="{'active': i == page}">
+      {{ i + 1 }}</a>
+  </li>
+</div>
